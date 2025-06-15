@@ -38,7 +38,7 @@ export default function RegisterPage() {
     <main className="min-h-screen md:p-4 p-4 flex items-center justify-center bg-black">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-3xl shadow-md w-full max-w-md space-y-4"
+        className="bg-stone-300 p-8 rounded-3xl shadow-md w-full max-w-md space-y-4"
       >
         <h2 className="text-2xl font-bold text-center py-4">
           Registeration Page
@@ -77,7 +77,7 @@ export default function RegisterPage() {
         <div className="py-2 grid place-content-center w-full">
           <button
             type="submit"
-            className=" px-6 justify-center rounded-3xl bg-blue-600 text-white py-3  hover:bg-blue-700"
+            className=" px-6 justify-center rounded-3xl bg-cyan-700 hover:bg-cyan-500 text-white py-3 "
           >
             Register
           </button>
