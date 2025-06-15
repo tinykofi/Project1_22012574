@@ -30,9 +30,10 @@ import { useRouter } from "next/navigation";
 export function NavUser({ user }) {
   const { isMobile } = useSidebar();
   const router = useRouter();
-  function handleLogOut(e) {
-    e.preventDefault();
-    router.push("/");
+
+  async function handleLogout() {
+    await fetch("/api/logout", { method: "POST" });
+    router.push("/"); // Redirect after logout
   }
 
   return (
@@ -96,7 +97,7 @@ export function NavUser({ user }) {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={handleLogOut}>
+            <DropdownMenuItem onClick={handleLogout}>
               <LogOut />
 
               <form> Log out</form>

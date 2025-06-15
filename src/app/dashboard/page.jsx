@@ -1,4 +1,6 @@
 import { AppSidebar } from "@/components/app-sidebar";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -14,7 +16,14 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 
-export default function Page() {
+export default async function Page() {
+  const cookieStore = await cookies();
+  const userId = cookieStore.get("user_id")?.value;
+
+  if (!userId) {
+    redirect("/");
+  }
+
   return (
     <SidebarProvider className="dark">
       <AppSidebar />

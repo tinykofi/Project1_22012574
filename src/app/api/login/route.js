@@ -1,5 +1,6 @@
 import pool from "@/lib/db";
 import bcrypt from "bcrypt";
+import { cookies } from "next/headers";
 
 export async function POST(request) {
   const { email, password } = await request.json();
@@ -19,6 +20,14 @@ export async function POST(request) {
     if (!valid) {
       return new Response("Invalid password", { status: 401 });
     }
+
+    const cookieStore = await cookies();
+    cookieStore.set("user_id", user.id.toString(), {
+      httpOnly: true,
+      path: "/",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24, // 1 day
+    });
 
     return new Response("Login successful", { status: 200 });
   } catch (error) {
