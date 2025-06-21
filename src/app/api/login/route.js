@@ -1,4 +1,3 @@
-"use client";
 import pool from "@/lib/db";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
